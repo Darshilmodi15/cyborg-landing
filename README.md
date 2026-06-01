@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cyborg Nexus Landing Page
 
-## Getting Started
+A premium cyborg-themed landing page built with Next.js 15, React 19, TypeScript, Tailwind CSS, ShadCN-style primitives, Framer Motion, GSAP ScrollTrigger, Lenis, Three.js, React Three Fiber, Drei, Lucide React, and CountUp.
 
-First, run the development server:
+## Local Setup
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://localhost:3000`.
+
+## Available Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
+npm run typecheck
+npm run format
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Project Structure
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+src/
+  app/
+  components/
+    faq/
+    features/
+    footer/
+    hero/
+    stats/
+    technology/
+    testimonials/
+    timeline/
+    ui/
+  hooks/
+  lib/
+  styles/
+public/
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Production Optimizations
 
-## Learn More
+- App Router metadata, Open Graph, Twitter cards, `sitemap.xml`, and `robots.txt`.
+- R3F hero scene is dynamically loaded on the client to keep server rendering lean.
+- Lenis and animation loops respect `prefers-reduced-motion`.
+- GSAP ScrollTrigger work is scoped and cleaned up on unmount.
+- Tailwind v4 tokens keep color and typography consistent across sections.
+- No external images are required for first paint; the hero uses procedural canvas and Three.js visuals.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Deploy on Vercel:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+vercel
+```
 
-## Deploy on Vercel
+Set the production domain in `src/app/layout.tsx`, `src/app/sitemap.ts`, and `src/app/robots.ts` if you move away from the placeholder Vercel URL.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- The footer legal pages are placeholders and should be replaced before a real launch.
+- `npm audit` currently reports 2 moderate advisories from the installed dependency tree. Review before production hardening.
