@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import type { Viewport } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const siteUrl = "https://cyborg-landing.vercel.app";
@@ -65,6 +66,7 @@ export default function RootLayout({
     <html lang="en" className="h-full scroll-smooth">
       <body className="min-h-full bg-background text-foreground antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   );
